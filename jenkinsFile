@@ -51,9 +51,6 @@ stages {
 				if [[ -f "$file" ]]; then 
 				 dt=$(date +%Y-%m-%d_%H:%M)
 				 sudo cp -p $(pwd)/ABC.exe /home/ec2-user/jenkinsBackup/ABC_$dt.exe
-				 sudo ls /home/ec2-user/jenkinsBackup/
-				 file="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
-				 sudo $file -v -i <<<"77 88 99"
 				 
 				if [ $? -eq 0 ]; then
 				  if [[ -x "$file" ]]; then  
