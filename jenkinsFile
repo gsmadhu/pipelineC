@@ -42,8 +42,7 @@ stages {
         stage('deploy') {
             steps {
                 echo 'Deploying to TEST environment..'
-				sh '''
-					#set +x
+				sh '''					
 					file="$(pwd)/ABC.exe"
 					pwd;
 					
@@ -76,8 +75,7 @@ stages {
         stage('test') {
             steps {
                 echo 'Testing....'
-				sh '''
-					#set +x
+				sh '''					
 					file="$(pwd)/ABC.exe"
 					pwd;
 					
