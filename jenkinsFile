@@ -53,7 +53,7 @@ stages {
 				 sudo cp -p $(pwd)/ABC.exe /home/ec2-user/jenkinsBackup/ABC_$dt.exe
 				 sudo ls /home/ec2-user/jenkinsBackup/
 				 file="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
-				 $file -v -i <<<"77 88 99"
+				 sudo $file -v -i <<<"77 88 99"
 				 
 				if [ $? -eq 0 ]; then
 				  if [[ -x "$file" ]]; then  
