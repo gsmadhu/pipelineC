@@ -53,9 +53,10 @@ stages {
 				 sudo cp -p $(pwd)/ABC.exe /home/ec2-user/jenkinsBackup/ABC_$dt.exe
 				 
 				if [ $? -eq 0 ]; then
-				  if [[ -x "$file" ]]; then  
-					  echo -e "\nSTEP 2:	Deployment Successful - Build pushed to artifactory"
-					  echo "       	ARTIFACTORY_PATH: /home/ec2-user/builds/$file"
+					file1="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
+				  if [[ -x "$file1" ]]; then  
+				  	  echo -e "\nSTEP 2:	Deployment Successful - Build pushed to artifactory"
+					  echo "       	ARTIFACTORY_PATH: /home/ec2-user/jenkinsBackup/$file1"
 				  fi
 				else  
 					  echo -e "**************** ERROR *********************\n"
@@ -77,8 +78,10 @@ stages {
                 echo 'Testing....'
 				sh '''
 				set +x
-					file="$(pwd)/ABC.exe"
-					pwd; 
+					dt=$(date +%Y-%m-%d_%H:%M)
+					file="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
+					sudo chmod -R 777 /home/ec2-user/jenkinsBackup
+					; 
 					
 				echo -e "\n\n**************************** This is a Deploy JOB for $file**************************** "
 				if [[ -f "$file" ]]; then 
@@ -86,8 +89,6 @@ stages {
 				
 				for i in {1..10}
 				do
-					oe=$((1000 + RANDOM % 10000))
-					fact=$((1 + RANDOM % 15))
 					num1=$((1 + RANDOM % 100))
 					num2=$((1 + RANDOM % 1000))
 					num3=$((1 + RANDOM % 2000))
@@ -95,7 +96,7 @@ stages {
 						echo -e "\n-------------------------- TEST_CASE ($count) --------------------------"
 						$file -v -i <<<"$num1 $num2 num3"
 					
-					if [ $? -eq 0 ]; then
+					if [ $? -eq 34 ]; then
 						echo -e "\n      RESULT -> TEST_CASE (${count}): SUCCESS" 
 					else  
 						echo -e "\n      RESULT -> TEST_CASE (${count}): FAILED"
