@@ -91,16 +91,13 @@ stages {
 					
 						echo -e "\n-------------------------- TEST_CASE ($count) --------------------------"
 						$file -v -i <<<"$num1 $num2 num3"
-					
+					echo $?
 					if [ $? -eq 34 ]; then
 						echo -e "\n      RESULT -> TEST_CASE (${count}): SUCCESS" 
 					else  
 						echo -e "\n      RESULT -> TEST_CASE (${count}): FAILED"
 						exit 1
 					fi
-
-					echo "-------------------------------------------------------------------"
-					((count++))
 				
 				else 
 					 echo -e "**************** ERROR *********************\n"
