@@ -93,11 +93,7 @@ stages {
 						
 					echo -e "**************** SUCCESS *********************\n"
 				
-				else 
-					 echo -e "**************** ERROR *********************\n"
-					  echo "Test Build Failure - ABC.exe notfound $file "
-					  echo -e "********************************************\n"
-					  exit 1
+				
 				fi
 				'''
 					}
