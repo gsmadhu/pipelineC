@@ -49,11 +49,10 @@ stages {
 					
 				echo -e "\n\n**************************** This is a Deploy JOB $file **************************** "
 				if [[ -f "$file" ]]; then 
-				 cd /home/ec2-user/jenkinsBackup
 				 dt=$(date +%Y-%m-%d_%H:%M)
-				 cp -r /var/lib/jenkins/workspace/pipelineExample/ABC.exe $(pwd)/ABC_$dt.exe
-				 ls
-				 file="$(pwd)/ABC_$dt.exe"
+				 cp -p $(pwd)/ABC.exe /home/ec2-user/jenkinsBackup/ABC_$dt.exe
+				 ls /home/ec2-user/jenkinsBackup/
+				 file="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
 				 $file -v -i <<<"77 88 99"
 				 
 				if [ $? -eq 0 ]; then
