@@ -43,7 +43,7 @@ stages {
             steps {
                 echo 'Deploying to TEST environment..'
 				sh '''
-					set +x
+					#set +x
 					file="$(pwd)/ABC.exe"
 					pwd;
 					
@@ -66,7 +66,7 @@ stages {
 				fi
 				else 
 					 echo -e "**************** ERROR *********************\n"
-					  echo "Build - ABC.exe notfound $file "
+					  echo "Deploy Build - ABC.exe notfound $file "
 					  echo -e "********************************************\n"
 					  exit 1
 				fi
@@ -77,7 +77,7 @@ stages {
             steps {
                 echo 'Testing....'
 				sh '''
-					set +x
+					#set +x
 					file="$(pwd)/ABC.exe"
 					pwd;
 					
