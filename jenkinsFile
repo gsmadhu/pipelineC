@@ -77,17 +77,15 @@ stages {
             steps {
                 echo 'Testing....'
 				sh '''
-				set +x
-					dt=$(date +%Y-%m-%d_%H:%M)
-					file="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
-					sudo chmod -R 777 /home/ec2-user/jenkinsBackup
-					pwd; 
+					set +x
+					file="$(pwd)/ABC.exe"
+					pwd;
 					
-				echo -e "\n\n**************************** This is a Deploy JOB for $file**************************** "
+				echo -e "\n\n**************** This is a Deployed JOB Testing for $file******************* "
 				if [[ -f "$file" ]]; then 
 				count=1
 				
-				for i in {1..10}
+				for i in {1}
 				do
 					num1=$((1 + RANDOM % 100))
 					num2=$((1 + RANDOM % 1000))
@@ -108,7 +106,7 @@ stages {
 				done
 				else 
 					 echo -e "**************** ERROR *********************\n"
-					  echo "Build - ABC.exe notfound $file "
+					  echo "Test Build Failure - ABC.exe notfound $file "
 					  echo -e "********************************************\n"
 					  exit 1
 				fi
