@@ -49,12 +49,13 @@ stages {
 					
 				echo -e "\n\n**************************** This is a Deploy JOB $file **************************** "
 				if [[ -f "$file" ]]; then 
-				echo -e "\nSTEP 1: Deploying $file with default input........"
-				num1=$((1 + RANDOM % 100))
-				num2=$((1 + RANDOM % 1000))
-				num3=$((1 + RANDOM % 1000))
-				$file -v -i <<<"$num1 $num2 $num3"
-
+				 cd /home/ec2-user/jenkinsBackup
+				 dt=$(date +%Y-%m-%d_%H:%M)
+				 cp -r /var/lib/jenkins/workspace/pipelineExample/ABC.exe $(pwd)/ABC_$dt.exe
+				 ls
+				 file="$(pwd)/ABC_$dt.exe"
+				 $file -v -i <<<"77 88 99"
+				 
 				if [ $? -eq 0 ]; then
 				  if [[ -x "$file" ]]; then  
 					  echo -e "\nSTEP 2:	Deployment Successful - Build pushed to artifactory"
