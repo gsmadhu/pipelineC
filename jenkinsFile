@@ -50,7 +50,7 @@ stages {
 				echo -e "\n\n**************************** This is a Deploy JOB $file **************************** "
 				if [[ -f "$file" ]]; then 
 				 dt=$(date +%Y-%m-%d_%H:%M)
-				 cp -p $(pwd)/ABC.exe /home/ec2-user/jenkinsBackup/ABC_$dt.exe
+				 sudo cp -p $(pwd)/ABC.exe /home/ec2-user/jenkinsBackup/ABC_$dt.exe
 				 ls /home/ec2-user/jenkinsBackup/
 				 file="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
 				 $file -v -i <<<"77 88 99"
