@@ -81,13 +81,13 @@ stages {
 					dt=$(date +%Y-%m-%d_%H:%M)
 					file="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
 					sudo chmod -R 777 /home/ec2-user/jenkinsBackup
-					;
+					; 
 					
 				echo -e "\n\n**************************** This is a Deploy JOB for $file**************************** "
 				if [[ -f "$file" ]]; then 
 				count=1
 				
-				for i in {1}
+				for i in {1..10}
 				do
 					num1=$((1 + RANDOM % 100))
 					num2=$((1 + RANDOM % 1000))
