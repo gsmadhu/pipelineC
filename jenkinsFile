@@ -5,8 +5,7 @@ stages {
             steps {
                 echo 'Building..'
 				sh '''
-						set +x
-						cd c_programs
+						set +x					
 						echo -e "\n\n**************************** This is a Build JOB **************************** "
 
 						if [[ -x "ABC.exe" ]]; then
@@ -44,7 +43,7 @@ stages {
                 echo 'Deploying to TEST environment..'
 				sh '''
 					set +x
-					file="$(pwd)/c_programs/ABC.exe"
+					file="$(pwd)/ABC.exe"
 					[[ -f "$file" ]] && sudo rm -f "$file"
 					pwd; sudo chmod 777 build; ./build 1> /dev/null
 					
@@ -78,7 +77,7 @@ stages {
                 echo 'Testing....'
 				sh '''
 				set +x
-					file="$(pwd)/c_programs/ABC.exe"
+					file="$(pwd)/ABC.exe"
 					[[ -f "$file" ]] && sudo rm -f "$file"
 					pwd; sudo chmod 777 build; ./build 1> /dev/null
 					
