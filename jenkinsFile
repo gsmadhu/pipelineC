@@ -50,7 +50,10 @@ stages {
 				echo -e "\n\n**************************** This is a Deploy JOB $file **************************** "
 				if [[ -f "$file" ]]; then 
 				echo -e "\nSTEP 1: Deploying $file with default input........"
-				$file -v -i <<<"5 400"
+				num1=$((1 + RANDOM % 100))
+				num2=$((1 + RANDOM % 1000))
+				num3=$((1 + RANDOM % 1000))
+				$file -v -i <<<"$num1 $num2 $num3"
 				ls $file
 
 				if [ $? -eq 0 ]; then
@@ -91,9 +94,10 @@ stages {
 					fact=$((1 + RANDOM % 15))
 					num1=$((1 + RANDOM % 100))
 					num2=$((1 + RANDOM % 1000))
+					num3=$((1 + RANDOM % 2000))
 					
 						echo -e "\n-------------------------- TEST_CASE ($count) --------------------------"
-						$file -v -i <<<"$num1 $num2"
+						$file -v -i <<<"$num1 $num2 num3"
 					
 					if [ $? -eq 0 ]; then
 						echo -e "\n      RESULT -> TEST_CASE (${count}): SUCCESS" 
