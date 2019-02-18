@@ -89,11 +89,15 @@ stages {
 					num3=$((1 + RANDOM % 2000))
 					
 						echo -e "\n-------------------------- TEST_CASE ($count) --------------------------"
-						$file -v -i <<<"$num1 $num2 num3" 
+						$file -v -i <<<"$num1 $num2 num3" || true
 						
 					echo -e "**************** SUCCESS *********************\n"
 				
-				
+				else 
+					 echo -e "**************** ERROR *********************\n"
+					  echo "Test Build Failure - ABC.exe notfound $file "
+					  echo -e "********************************************\n"
+					  exit 1
 				fi
 				'''
 					}
