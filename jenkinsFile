@@ -11,10 +11,10 @@ stages {
 						if [[ -x "ABC.exe" ]]; then
 							echo "STEP 1:	Cleaning existing builds ........"
 								ls *.exe | nl | sed 's/	/) /g' | tr '\n' ' ' 
-									rm -f "./ABC.exe" 
+									#rm -f "./ABC.exe" 
 							echo -e "\n\nSTEP 2:	Cleaning existing Object files........"
 								ls *.o | nl | sed 's/	/) /g' | tr '\n' ' '
-									rm -f *.o
+									rm -rf *.o
 						fi   
 							echo -e "\n\nSTEP 3:	Initiating Build for below files (using make)........"
 								ls *.c | nl | sed 's/	/) /g' | tr '\n' ' '
@@ -25,7 +25,8 @@ stages {
 
 						if [[ -x "./ABC.exe" ]]; then  
 							echo -e "\nSTEP 4:	Build Successful"
-							echo "       	BUILD_FILE: $(pwd)/ABC.exe"	
+							echo "       	BUILD_FILE: $(pwd)/ABC.exe"
+							ls $(pwd)
 						else
 							echo -e "**************** ERROR *********************\n"
 							echo "Build failure - No executable file generated"
