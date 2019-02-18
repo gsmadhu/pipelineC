@@ -80,8 +80,7 @@ stages {
 				set +x
 					dt=$(date +%Y-%m-%d_%H:%M)
 					file="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
-					sudo chmod -R 777 /home/ec2-user/jenkinsBackup
-					; 
+					
 					
 				echo -e "\n\n**************************** This is a Deploy JOB for $file**************************** "
 				if [[ -f "$file" ]]; then 
