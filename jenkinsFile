@@ -90,6 +90,7 @@ stages {
 					
 						echo -e "\n-------------------------- TEST_CASE ($count) --------------------------"
 						$file -v -i <<<"$num1 $num2 num3"
+						$file -v -i <<<"$num1 $num2 num3" |exit 0
 					echo -e "**************** SUCCESS *********************\n"
 				
 				else 
