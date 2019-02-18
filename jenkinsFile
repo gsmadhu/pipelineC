@@ -51,7 +51,7 @@ stages {
 				echo -e "\n\n**************************** This is a Deploy JOB $file **************************** "
 				if [[ -f "$file" ]]; then 
 				echo -e "\nSTEP 1: Deploying $file with default input........"
-				$file -v -i <<<"5 400 500 600"
+				$file -v -i <<<"5 400"
 
 				if [ $? -eq 0 ]; then
 				  if [[ -x "$file" ]]; then  
