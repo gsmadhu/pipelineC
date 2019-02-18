@@ -53,6 +53,7 @@ stages {
 				 sudo cp -p $(pwd)/ABC.exe /home/ec2-user/jenkinsBackup/ABC_$dt.exe
 				 
 				if [ $? -eq 0 ]; then
+					dt=$(date +%Y-%m-%d_%H:%M)
 					file1="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
 				  if [[ -x "$file1" ]]; then  
 				  	  echo -e "\nSTEP 2:	Deployment Successful - Build pushed to artifactory"
@@ -86,7 +87,7 @@ stages {
 				if [[ -f "$file" ]]; then 
 				count=1
 				
-				for i in {1..10}
+				for i in {1}
 				do
 					num1=$((1 + RANDOM % 100))
 					num2=$((1 + RANDOM % 1000))
