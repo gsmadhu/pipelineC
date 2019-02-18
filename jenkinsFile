@@ -54,7 +54,6 @@ stages {
 				num2=$((1 + RANDOM % 1000))
 				num3=$((1 + RANDOM % 1000))
 				$file -v -i <<<"$num1 $num2 $num3"
-				ls $file
 
 				if [ $? -eq 0 ]; then
 				  if [[ -x "$file" ]]; then  
