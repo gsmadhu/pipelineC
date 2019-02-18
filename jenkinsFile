@@ -53,7 +53,6 @@ stages {
 				 sudo cp -p $(pwd)/ABC.exe /home/ec2-user/jenkinsBackup/ABC_$dt.exe
 				 
 				if [ $? -eq 0 ]; then
-					dt=$(date +%Y-%m-%d_%H:%M)
 					file1="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
 				  if [[ -x "$file1" ]]; then  
 				  	  echo -e "\nSTEP 2:	Deployment Successful - Build pushed to artifactory"
@@ -81,7 +80,8 @@ stages {
 				set +x
 					dt=$(date +%Y-%m-%d_%H:%M)
 					file="/home/ec2-user/jenkinsBackup/ABC_$dt.exe"
-					pwd;
+					sudo chmod -R 777 /home/ec2-user/jenkinsBackup
+					;
 					
 				echo -e "\n\n**************************** This is a Deploy JOB for $file**************************** "
 				if [[ -f "$file" ]]; then 
@@ -96,7 +96,7 @@ stages {
 						echo -e "\n-------------------------- TEST_CASE ($count) --------------------------"
 						$file -v -i <<<"$num1 $num2 num3"
 					
-					if [ $? -eq 0 ]; then
+					if [ $? -eq 34 ]; then
 						echo -e "\n      RESULT -> TEST_CASE (${count}): SUCCESS" 
 					else  
 						echo -e "\n      RESULT -> TEST_CASE (${count}): FAILED"
