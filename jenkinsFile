@@ -84,10 +84,7 @@ stages {
 					
 				echo -e "\n\n**************** This is a Deployed JOB Testing for $file******************* "
 				if [[ -f "$file" ]]; then 
-				count=1
-				
-				for i in {1}
-				do
+				count=1		
 					num1=$((1 + RANDOM % 100))
 					num2=$((1 + RANDOM % 1000))
 					num3=$((1 + RANDOM % 2000))
@@ -104,7 +101,7 @@ stages {
 
 					echo "-------------------------------------------------------------------"
 					((count++))
-				done
+				
 				else 
 					 echo -e "**************** ERROR *********************\n"
 					  echo "Test Build Failure - ABC.exe notfound $file "
